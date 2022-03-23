@@ -8,4 +8,5 @@ To run the code on your pc you must have python installed in your pc. Then run t
 	2. pip install pygame
 	3. pip install PyMuPDF
 	4. pip install googletrans==3.1.0a0
-	after installing above packages just the python file
+	after installing above packages just run the python file "gui2_final.py"
+A sample pdf is given
