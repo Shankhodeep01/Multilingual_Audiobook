@@ -1,6 +1,6 @@
 ---> Requirements <---
  You can play the exe file directly :
-	1. Go to "EXE_FILE" folder.
+	1. Go to "Audiobook_exe" folder.
 	2. Go to "Multilingual Audiobook" folder.
 	3. Just run the "Multilingual Audiobook" application.
 To run the code on your pc you must have python installed in your pc. Then run the following commands in your terminal

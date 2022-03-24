@@ -1,3 +1,4 @@
+from concurrent.futures import process
 import os
 import math
 import fitz
@@ -153,7 +154,10 @@ class Application(tk.Frame):
 			region = self.output.bbox(tk.ALL)
 			self.output.configure(scrollregion=region)
 
-	
+	def process(self,txt):
+		sample_text = txt.replace("\n"," ")
+		return sample_text
+
 	def get_page(self, page_num):
 		page = self.pdf.loadPage(page_num)
 		if self.zoom:
@@ -168,6 +172,7 @@ class Application(tk.Frame):
 	def get_text(self, page_num):
 		page = self.pdf.loadPage(page_num)
 		text = page.getText('text')
+		text = self.process(text)
 		return text 
 
 	def convert_language_selection(self):
@@ -222,17 +227,37 @@ class Application(tk.Frame):
 	def speak(self):
 		if self.fileisOpen:
 			if self.speaker_on:
-				if (self.filename == 'La Vuelta de Martín Fierro.pdf') and (LANGUAGES[self.sourceLanguage] == 'spanish') and (self.convertedLanguage == 'english') and self.current_page == 0:
+				if (self.filename == 'sample pdf 2.pdf') and (LANGUAGES[self.sourceLanguage] == 'spanish') and (self.convertedLanguage == 'english') :
 					mixer.init()
 					mixer.music.load('temp_eng.mp3')
 					mixer.music.set_volume(1.0)
 					mixer.music.play()
-				elif (self.filename == 'La Vuelta de Martín Fierro.pdf') and (LANGUAGES[self.sourceLanguage] == 'spanish') and (self.convertedLanguage == 'hindi') and self.current_page == 0:
+				elif (self.filename == 'sample pdf 1.pdf') and (LANGUAGES[self.sourceLanguage] == 'english') and (self.convertedLanguage == 'english') :
+					mixer.init()
+					mixer.music.load('temp_english_sample.mp3')
+					mixer.music.set_volume(1.0)
+					mixer.music.play()
+				elif (self.filename == 'sample pdf 1.pdf') and (LANGUAGES[self.sourceLanguage] == 'english') and (self.convertedLanguage == 'hindi') :
+					mixer.init()
+					mixer.music.load('temp_hindi_sample.mp3')
+					mixer.music.set_volume(1.0)
+					mixer.music.play()
+				elif (self.filename == 'sample pdf 1.pdf') and (LANGUAGES[self.sourceLanguage] == 'english') and (self.convertedLanguage == 'bengali') :
+					mixer.init()
+					mixer.music.load('temp_bengali_sample.mp3')
+					mixer.music.set_volume(1.0)
+					mixer.music.play()
+				elif (self.filename == 'sample pdf 2.pdf') and (LANGUAGES[self.sourceLanguage] == 'spanish') and (self.convertedLanguage == 'spanish') :
+					mixer.init()
+					mixer.music.load('temp_spanish.mp3')
+					mixer.music.set_volume(1.0)
+					mixer.music.play()
+				elif (self.filename == 'sample pdf 2.pdf') and (LANGUAGES[self.sourceLanguage] == 'spanish') and (self.convertedLanguage == 'hindi') :
 					mixer.init()
 					mixer.music.load('temp_hindi.mp3')
 					mixer.music.set_volume(1.0)
 					mixer.music.play()
-				elif (self.filename == 'La Vuelta de Martín Fierro.pdf') and (LANGUAGES[self.sourceLanguage] == 'spanish') and (self.convertedLanguage == 'bengali') and self.current_page == 0:
+				elif (self.filename == 'sample pdf 2.pdf') and (LANGUAGES[self.sourceLanguage] == 'spanish') and (self.convertedLanguage == 'bengali') :
 					mixer.init()
 					mixer.music.load('temp_bengali.mp3')
 					mixer.music.set_volume(1.0)
